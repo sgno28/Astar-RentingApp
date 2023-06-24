@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavigationBar from "../components/NavigationBar";
 import MatchCard from "../components/MatchCard";
+import { db } from "../firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const style = {
   maindiv: "bg-gray-100 h-screen",
@@ -14,18 +16,32 @@ const style = {
 };
 
 const Matches = () => {
-  const matches = [
-    {
-      name: "John Doe",
-      image: "john-doe.jpg",
-      bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
-    {
-      name: "Jane Smith",
-      image: "jane-smith.jpg",
-      bio: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-    },
-  ];
+  const landlord_address = "0x27ae56292901cABd2E86fcD8855a132EdE297638";
+  const [matches, setmatches] = useState([]);
+  useEffect(() => {
+    const getItems = async (landlord_address) => {
+      const docRef = doc(db, "property", landlord_address);
+      const docSnap = await getDoc(docRef);
+      const matches = docSnap.data();
+      console.log(matches);
+      setmatches(matches.potential);
+    };
+    getItems(landlord_address);
+  }, []);
+
+  // const matches = [
+  //   {
+  //     name: "John Doe",
+  //     image: "john-doe.jpg",
+  //     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  //   },
+  //   {
+  //     name: "Jane Smith",
+  //     image: "jane-smith.jpg",
+  //     bio: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+  //   },
+  // ];
+
   return (
     <div className={style.maindiv}>
       <NavigationBar />
