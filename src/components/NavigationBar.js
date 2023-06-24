@@ -1,8 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo_only.png";
+import { useWallet } from "../walletContext";
 
 const NavigationBar = () => {
+  const { wallet, connecting, connect, disconnect, ethersProvider } = useWallet();
   let navigate = useNavigate();
 
   const routeChange = () => {
@@ -39,10 +41,11 @@ const NavigationBar = () => {
 
           <div className="flex items-center">
             <button
-              onClick={routeChange}
+              disabled={connecting}
+              onClick={() => (wallet ? disconnect(wallet) : connect())}
               className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl  focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             >
-              Connect Wallet
+              {connecting ? "connecting" : wallet ? "disconnect" : "connect"}
             </button>
           </div>
         </div>
