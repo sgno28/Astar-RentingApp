@@ -1,16 +1,9 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo_only.png";
 import { useWallet } from "../walletContext";
 
 const NavigationBar = () => {
   const { wallet, connecting, connect, disconnect, ethersProvider } = useWallet();
-  let navigate = useNavigate();
-
-  const routeChange = () => {
-    let path = `/signin`;
-    navigate(path);
-  };
 
   return (
     <nav className="bg-gray-800">

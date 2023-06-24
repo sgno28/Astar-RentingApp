@@ -1,7 +1,8 @@
 import React from "react";
 import NavigationBar from "../components/NavigationBar";
 import backgroundimg from "../assets/mainbg.png";
-
+import { useNavigate } from "react-router-dom";
+import { useWallet } from "../walletContext";
 const style = {
   bodyContainer: "flex  min-h-screen",
   verticalContainer: "flex flex-col items-start justify-start",
@@ -15,6 +16,26 @@ const style = {
 };
 
 const Home = () => {
+  const { wallet, connecting, connect, disconnect, ethersProvider } = useWallet();
+  let navigate = useNavigate();
+  const tenantRouteChange = () => {
+    if (wallet) {
+      let path = `/TenantSwipe`;
+      navigate(path);
+    } else {
+      wallet ? disconnect(wallet) : connect()
+    }
+  }
+
+  const landlordRouteChange = () => {
+    if (wallet) {
+      let path = `/Matches`;
+      navigate(path);
+    } else {
+      wallet ? disconnect(wallet) : connect()
+    }
+  }
+
   return (
     <div className="bg-gray-800 ">
       <NavigationBar />
@@ -25,10 +46,10 @@ const Home = () => {
               <div className={style.content}>
                 <h1 className={style.h1}>Make Living Easy.</h1>
                 <div className="flex">
-                  <button type="button" className={style.button}>
+                  <button onClick={tenantRouteChange} type="button" className={style.button}>
                     Tenants
                   </button>
-                  <button type="button" className={style.button}>
+                  <button onClick={landlordRouteChange} type="button" className={style.button}>
                     Landlords
                   </button>
                 </div>
