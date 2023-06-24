@@ -14,9 +14,12 @@ const NavigationBar = () => {
     <nav className="bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
-          <div className="flex items-center">
+          <div className="flex items-center ">
             <a href="/" className="text-white text-lg font-semibold">
-              <img src={Logo} alt="Logo" className="w-14 h-14 mr-5" />
+              <div className="flex justify-center items-center">
+                <p className="text-lg">Blocasa</p>
+                <img src={Logo} alt="Logo" className="w-14 h-14 mr-5 -ml-4" />
+              </div>
             </a>
           </div>
 
