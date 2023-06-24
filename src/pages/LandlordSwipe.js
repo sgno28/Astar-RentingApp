@@ -1,14 +1,14 @@
 import React from "react";
 import NavigationBar from "../components/NavigationBar";
-
+import { Smile, X } from "react-feather";
 const style = {
-  maindiv: "flex flex-col items-center justify-center min-h-screen",
-  button1:
-    "mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded",
+  maindiv: "flex flex-col items-center h-screen",
+  card: "w-64 p-4 border border-gray-300 rounded shadow-md bg-white mt-10",
   image: "mt-8 w-64 h-64 rounded-full",
-  button2:
-    "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded",
-  button3: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded",
+  buttonkyc:
+    "px-4 py-2 bg-green-500 text-white rounded cursor-pointer float-right mt-2",
+  button1: "px-4 py-2 bg-green-500 text-white rounded cursor-pointer mr-2",
+  button2: "px-4 py-2 bg-red-500 text-white rounded cursor-pointer",
 };
 
 const LandlordSwipe = () => {
@@ -16,15 +16,33 @@ const LandlordSwipe = () => {
     <>
       <NavigationBar />
       <div className={style.maindiv}>
-        <button className={style.button1}>KYC</button>
-        <img
-          className={style.image}
-          src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-          alt="Profile"
-        />
-        <div className="flex space-x-4 mt-4">
-          <button className={style.button2}>Yes</button>
-          <button className={style.button3}>No</button>
+        <div className={style.card}>
+          <img
+            className="w-full rounded"
+            src="https://placeimg.com/640/480/people"
+            alt="Profile"
+          />
+          <div className="mt-4">
+            <h3 className="text-lg font-semibold">Rent Cost:</h3>
+            <p>$1,000</p>
+          </div>
+          <div className="mt-4">
+            <h3 className="text-lg font-semibold">Name:</h3>
+            <p>John Doe</p>
+          </div>
+          <div className="mt-4">
+            <h3 className="text-lg font-semibold">Description:</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <button className={style.buttonkyc}>KYC</button>
+        </div>
+        <div className="flex mt-4">
+          <button className={style.button1}>
+            <Smile />
+          </button>
+          <button className={style.button2}>
+            <X />
+          </button>
         </div>
       </div>
     </>
