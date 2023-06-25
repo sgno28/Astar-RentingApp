@@ -4,6 +4,7 @@ import { Smile, X } from "react-feather";
 import { db } from "../firebase";
 import { doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import apartimg from "../assets/apart.jpg";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   maindiv: "flex flex-col items-center h-screen bg-gray-800 ",
@@ -13,7 +14,7 @@ const style = {
   button2: "px-4 py-2 bg-red-500 text-white rounded cursor-pointer",
 };
 /* eslint-disable */
-const swipeon = async (address) => {
+const swipeon = async (address, navigate) => {
   const documentRef = doc(
     db,
     "property",
@@ -23,10 +24,13 @@ const swipeon = async (address) => {
   await updateDoc(documentRef, {
     potential: arrayUnion(address),
   });
+  navigate("/Matches");
 };
 
 const TenantSwipe = () => {
+  let navigate = useNavigate();
   const address = "0xE36075e712150909E67C628cb2c002aE0fb9EB74 ";
+
   return (
     <>
       <NavigationBar />
@@ -43,7 +47,10 @@ const TenantSwipe = () => {
           </div>
         </div>
         <div className="flex mt-4">
-          <button className={style.button1} onClick={() => swipeon(address)}>
+          <button
+            className={style.button1}
+            onClick={() => swipeon(address, navigate)}
+          >
             <Smile />
           </button>
           <button className={style.button2}>
