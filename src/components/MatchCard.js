@@ -1,4 +1,6 @@
 import React from "react";
+import { db } from "../firebase";
+import { doc, getDoc, updateDoc, arrayRemove } from "firebase/firestore";
 
 const style = {
   card: "w-120 p-2 border border-gray-300 rounded shadow-md bg-white mt-10",
@@ -6,6 +8,29 @@ const style = {
     "bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full",
   buttonpass:
     "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full mr-2",
+};
+/* eslint-disable */
+const acceptbutton = async (address) => {
+  const documentRef = doc(
+    db,
+    "property",
+    "0x27ae56292901cABd2E86fcD8855a132EdE297638"
+  );
+  await updateDoc(documentRef, {
+    taken: true,
+    taken_address: address,
+  });
+};
+
+const removebutton = async (address) => {
+  const documentRef = doc(
+    db,
+    "property",
+    "0x27ae56292901cABd2E86fcD8855a132EdE297638"
+  );
+  await updateDoc(documentRef, {
+    potential: arrayRemove(address),
+  });
 };
 
 const MatchCard = ({ match }) => {
@@ -16,8 +41,22 @@ const MatchCard = ({ match }) => {
         <p className="text-gray-700 text-base">{match}</p>
       </div>
       <div className="px-6 py-4">
-        <button className={style.buttonaccept}>Accept</button>
-        <button className={style.buttonpass}>Pass</button>
+        <button
+          onClick={() => {
+            acceptbutton(match);
+          }}
+          className={style.buttonaccept}
+        >
+          Accept
+        </button>
+        <button
+          onClick={() => {
+            removebutton(match);
+          }}
+          className={style.buttonpass}
+        >
+          Pass
+        </button>
       </div>
     </div>
   );
