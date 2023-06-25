@@ -16,25 +16,26 @@ const style = {
 };
 
 const Home = () => {
-  const { wallet, connecting, connect, disconnect, ethersProvider } = useWallet();
+  const { wallet, connecting, connect, disconnect, ethersProvider } =
+    useWallet();
   let navigate = useNavigate();
   const tenantRouteChange = () => {
     if (wallet) {
       let path = `/TenantSwipe`;
       navigate(path);
     } else {
-      wallet ? disconnect(wallet) : connect()
+      wallet ? disconnect(wallet) : connect();
     }
-  }
+  };
 
   const landlordRouteChange = () => {
     if (wallet) {
       let path = `/Matches`;
       navigate(path);
     } else {
-      wallet ? disconnect(wallet) : connect()
+      wallet ? disconnect(wallet) : connect();
     }
-  }
+  };
 
   return (
     <div className="bg-gray-800 ">
@@ -44,12 +45,20 @@ const Home = () => {
           <div className={style.container}>
             <div className="flex justify-center items-center">
               <div className={style.content}>
-                <h1 className={style.h1}>Make Living Easy.</h1>
+                <h1 className={style.h1}>Make Living Easy</h1>
                 <div className="flex">
-                  <button onClick={tenantRouteChange} type="button" className={style.button}>
+                  <button
+                    onClick={tenantRouteChange}
+                    type="button"
+                    className={style.button}
+                  >
                     Tenants
                   </button>
-                  <button onClick={landlordRouteChange} type="button" className={style.button}>
+                  <button
+                    onClick={landlordRouteChange}
+                    type="button"
+                    className={style.button}
+                  >
                     Landlords
                   </button>
                 </div>
