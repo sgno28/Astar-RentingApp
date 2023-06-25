@@ -4,7 +4,7 @@ import { Smile, X } from "react-feather";
 import { db } from "../firebase";
 import { doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 const style = {
-  maindiv: "flex flex-col items-center h-screen",
+  maindiv: "flex flex-col items-center h-screen bg-gray-800 ",
   card: "w-64 p-4 border border-gray-300 rounded shadow-md bg-white mt-10",
   image: "mt-8 w-64 h-64 rounded-full",
   button1: "px-4 py-2 bg-green-500 text-white rounded cursor-pointer mr-2",

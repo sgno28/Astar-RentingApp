@@ -52,8 +52,8 @@ const Matches = () => {
   return (
     <div className={style.maindiv}>
       <NavigationBar />
-      <div className="flex justify-center items-center">
-        <div className="flex flex-col items-center">
+      <div className="flex justify-center items-center bg-gray-800 ">
+        <div className="flex flex-col items-center h-screen">
           {matches.map((match, index) => (
             <MatchCard key={index} match={match} />
           ))}
