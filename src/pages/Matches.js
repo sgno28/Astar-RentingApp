@@ -23,8 +23,15 @@ const Matches = () => {
       const docRef = doc(db, "property", landlord_address);
       const docSnap = await getDoc(docRef);
       const matches = docSnap.data();
-      console.log(matches);
-      setmatches(matches.potential);
+      if (matches.taken == true) {
+        return (
+          <div>
+            <p>smart contract here</p>
+          </div>
+        );
+      } else {
+        setmatches(matches.potential);
+      }
     };
     getItems(landlord_address);
   }, []);
