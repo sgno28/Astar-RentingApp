@@ -52,7 +52,11 @@ const Matches = () => {
       <div className={style.maindiv}>
         <NavigationBar />
         <div className="flex justify-center items-center bg-gray-800 h-screen">
-          <image className="w-full rounded" source={contractimg}></image>
+          <img
+            style={{width:600, height:800}}
+            src={contractimg}
+            alt="Contract Image"
+          />
         </div>
       </div>
     );
