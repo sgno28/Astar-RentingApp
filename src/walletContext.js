@@ -95,7 +95,7 @@ export const WalletProvider = ({ children }) => {
     disconnect,
     ethersProvider,
   };
-
+  
   return (
     <WalletContext.Provider value={value}>{children}</WalletContext.Provider>
   );

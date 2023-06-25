@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavigationBar from "../components/NavigationBar";
 import backgroundimg from "../assets/mainbg.png";
 import { useNavigate } from "react-router-dom";
 import { useWallet } from "../walletContext";
+import { checkContract } from "../contractUtils";
 const style = {
   bodyContainer: "flex  min-h-screen",
   verticalContainer: "flex flex-col items-start justify-start",
@@ -27,6 +28,10 @@ const Home = () => {
       wallet ? disconnect(wallet) : connect();
     }
   };
+
+  // useEffect(()=>{
+  //   checkContract();
+  // })
 
   const landlordRouteChange = () => {
     if (wallet) {
