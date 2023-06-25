@@ -21,7 +21,7 @@ const acceptbutton = async (address) => {
     taken_address: address,
   });
   const docsnap = await getDoc(documentRef);
-  const rent_data = docsnap.getData();
+  const rent_data = docsnap.Data();
   const smart_contract_data = {
     landlord: "0x27ae56292901cABd2E86fcD8855a132EdE297638",
     renter: rent_data.taken_address,
