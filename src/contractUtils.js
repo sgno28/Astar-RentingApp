@@ -447,10 +447,7 @@ export async function checkContract() {
     "wss://rpc.shibuya.astar.network"
   );
   // Create a new instance of the Wallet connected to the network
-  const wallet = new ethers.Wallet(
-    "7a4a20c29de53ced781903ccf84190ba816370031320338fef1ee07281b2e10b",
-    provider
-  );
+  const wallet = new ethers.Wallet("", provider);
 
   // The address from the above deployment example
   const contractAddress = "0x02888cf8d7C5609486183ce04A47dd03A20F4FBd";
@@ -461,7 +458,7 @@ export async function checkContract() {
   const contract = new ethers.Contract(contractAddress, abi, wallet);
 
   // Call the contract's methods, for example
-  const result = await contract.owner()
+  const result = await contract.owner();
   //let mint = await contract.safeMint("0xE36075e712150909E67C628cb2c002aE0fb9EB74", "https://gateway.pinata.cloud/ipfs/QmUSLkbvAVNGiMb3rQMUbLGk8X6v7hso1Xj4TEWXM311jH");
   console.log(result);
   //   const wsProvider = new WsProvider("wss://rpc.shibuya.astar.network");
