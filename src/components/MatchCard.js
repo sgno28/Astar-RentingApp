@@ -20,6 +20,15 @@ const acceptbutton = async (address) => {
     taken: true,
     taken_address: address,
   });
+  const docsnap = await getDoc(documentRef);
+  const rent_data = docsnap.getData();
+  const smart_contract_data = {
+    landlord: "0x27ae56292901cABd2E86fcD8855a132EdE297638",
+    renter: rent_data.taken_address,
+    rent: rent_data.rent,
+    duration: rent_data.duration,
+    image: "insert here",
+  };
 };
 
 const removebutton = async (address) => {

@@ -3,6 +3,8 @@ import NavigationBar from "../components/NavigationBar";
 import { Smile, X } from "react-feather";
 import { db } from "../firebase";
 import { doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import apartimg from "../assets/apart.jpg";
+
 const style = {
   maindiv: "flex flex-col items-center h-screen bg-gray-800 ",
   card: "w-64 p-4 border border-gray-300 rounded shadow-md bg-white mt-10",
@@ -30,22 +32,14 @@ const TenantSwipe = () => {
       <NavigationBar />
       <div className={style.maindiv}>
         <div className={style.card}>
-          <img
-            className="w-full rounded"
-            src="https://placeimg.com/640/480/people"
-            alt="Profile"
-          />
+          <img className="w-full rounded" src={apartimg} alt="Profile" />
           <div className="mt-4">
             <h3 className="text-lg font-semibold">Rent Cost:</h3>
-            <p>$1,000</p>
+            <p>$1,000/week</p>
           </div>
           <div className="mt-4">
-            <h3 className="text-lg font-semibold">Name:</h3>
-            <p>John Doe</p>
-          </div>
-          <div className="mt-4">
-            <h3 className="text-lg font-semibold">Description:</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3 className="text-lg font-semibold">Lease time:</h3>
+            <p>12 months</p>
           </div>
         </div>
         <div className="flex mt-4">
