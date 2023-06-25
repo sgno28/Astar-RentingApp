@@ -18,17 +18,14 @@ const style = {
 const Matches = () => {
   const landlord_address = "0x27ae56292901cABd2E86fcD8855a132EdE297638";
   const [matches, setmatches] = useState([]);
+  const [render_cards, set_render_cards] = useState(true);
   useEffect(() => {
     const getItems = async (landlord_address) => {
       const docRef = doc(db, "property", landlord_address);
       const docSnap = await getDoc(docRef);
       const matches = docSnap.data();
       if (matches.taken == true) {
-        return (
-          <div>
-            <p>smart contract here</p>
-          </div>
-        );
+        set_render_cards(false);
       } else {
         setmatches(matches.potential);
       }
@@ -48,19 +45,30 @@ const Matches = () => {
   //     bio: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
   //   },
   // ];
-
-  return (
-    <div className={style.maindiv}>
-      <NavigationBar />
-      <div className="flex justify-center items-center bg-gray-800 ">
-        <div className="flex flex-col items-center h-screen">
-          {matches.map((match, index) => (
-            <MatchCard key={index} match={match} />
-          ))}
+  if (render_cards == true) {
+    return (
+      <div className={style.maindiv}>
+        <NavigationBar />
+        <div className="flex justify-center items-center bg-gray-800 ">
+          <div className="flex flex-col items-center h-screen">
+            {matches.map((match, index) => (
+              <MatchCard key={index} match={match} />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className={style.maindiv}>
+        <NavigationBar />
+
+        <div className="flex justify-center items-center bg-gray-800 h-screen">
+          <header>Smart Contract here</header>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Matches;
