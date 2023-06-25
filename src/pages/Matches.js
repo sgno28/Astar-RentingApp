@@ -3,6 +3,7 @@ import NavigationBar from "../components/NavigationBar";
 import MatchCard from "../components/MatchCard";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
+import contractimg from "../assets/rent_template.jpg";
 
 const style = {
   maindiv: "bg-gray-100 h-screen",
@@ -33,18 +34,6 @@ const Matches = () => {
     getItems(landlord_address);
   }, []);
 
-  // const matches = [
-  //   {
-  //     name: "John Doe",
-  //     image: "john-doe.jpg",
-  //     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  //   },
-  //   {
-  //     name: "Jane Smith",
-  //     image: "jane-smith.jpg",
-  //     bio: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-  //   },
-  // ];
   if (render_cards == true) {
     return (
       <div className={style.maindiv}>
@@ -62,9 +51,8 @@ const Matches = () => {
     return (
       <div className={style.maindiv}>
         <NavigationBar />
-
         <div className="flex justify-center items-center bg-gray-800 h-screen">
-          <header>Smart Contract here</header>
+          <image className="w-full rounded" source={contractimg}></image>
         </div>
       </div>
     );

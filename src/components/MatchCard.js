@@ -21,7 +21,7 @@ const acceptbutton = async (address) => {
     taken_address: address,
   });
   const docsnap = await getDoc(documentRef);
-  const rent_data = docsnap.Data();
+  const rent_data = docsnap.data();
   const smart_contract_data = {
     landlord: "0x27ae56292901cABd2E86fcD8855a132EdE297638",
     renter: rent_data.taken_address,
@@ -29,6 +29,7 @@ const acceptbutton = async (address) => {
     duration: rent_data.duration,
     image: "insert here",
   };
+  window.location.reload(false);
 };
 
 const removebutton = async (address) => {
@@ -40,6 +41,7 @@ const removebutton = async (address) => {
   await updateDoc(documentRef, {
     potential: arrayRemove(address),
   });
+  window.location.reload(false);
 };
 
 const MatchCard = ({ match }) => {
